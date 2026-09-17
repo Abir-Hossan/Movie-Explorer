@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { getAllShows, searchShows } from '../services/tvmazeApi';
-import useDebounce from './useDebounce';
+import { useEffect, useState } from "react";
+import { getAllShows, searchShows } from "../services/tvmazeApi";
+import useDebounce from "./useDebounce";
 
 export default function useMovies(query) {
   const debouncedQuery = useDebounce(query.trim(), 400);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
-    setError('');
+    setError("");
 
     const load = async () => {
       try {
@@ -20,8 +20,10 @@ export default function useMovies(query) {
           : await getAllShows(controller.signal);
         setMovies(data);
       } catch (err) {
-        if (err.name !== 'AbortError') {
-          setError('Unable to load shows right now. Please check your connection and try again.');
+        if (err.name !== "AbortError") {
+          setError(
+            "Unable to load shows right now. Please check your connection and try again.",
+          );
         }
       } finally {
         if (!controller.signal.aborted) setLoading(false);
