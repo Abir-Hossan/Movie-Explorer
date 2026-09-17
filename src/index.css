@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: #09090b; font-family: var(--font-sans); }
+button, input { font: inherit; }
+button { cursor: pointer; }
+::selection { background: rgba(239, 68, 68, .35); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fade-up { animation: fadeUp .45s ease-out both; }
+
+@keyframes shimmer { 0% { background-position: -700px 0; } 100% { background-position: 700px 0; } }
+.skeleton { background: linear-gradient(90deg, #18181b 25%, #27272a 50%, #18181b 75%); background-size: 700px 100%; animation: shimmer 1.5s infinite; }
+
+.modal-scrollbar::-webkit-scrollbar { width: 8px; }
+.modal-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.modal-scrollbar::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 999px; }
