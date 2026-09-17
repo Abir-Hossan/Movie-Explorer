@@ -210,9 +210,8 @@ npm run dev
 
 Application will run on:
 
-```
-http://localhost:5173
-```
+
+https://movie-explorer-ivory-six.vercel.app/
 
 ---
 
